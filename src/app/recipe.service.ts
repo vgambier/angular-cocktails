@@ -20,4 +20,8 @@ export class RecipeService {
     return this.httpClient.get<Recipe>(`${this.recipeUrl}/${id}`);
   }
 
+  postRecipe(body: FormData): Observable<string> {
+    return this.httpClient.post<string>(this.recipeUrl, body);
+  }
+
 }
