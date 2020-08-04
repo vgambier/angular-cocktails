@@ -29,4 +29,12 @@ export class RecipeListComponent implements OnInit {
     );
   }
 
+  onDelete(id: number) {
+
+    console.log();
+
+    var indexOfEntryOfId = this.recipes.map(recipe => recipe.id).indexOf(id); // yes
+    this.recipes.splice(indexOfEntryOfId, 1);
+  }
+
 }
