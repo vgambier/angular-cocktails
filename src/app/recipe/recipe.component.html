@@ -1,0 +1,35 @@
+<mat-card class="cocktail-card">
+
+    <mat-card-header>
+        <div mat-card-avatar class="dog-header-image"></div>
+        <mat-card-title>{{recipe.name}}</mat-card-title>
+        <mat-card-subtitle>Cocktail</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{recipe.picture}}" alt="Photo of a {{recipe.name}}">
+    <mat-card-content>
+        <p>
+            {{recipe.description}}
+        </p>
+        Ingredients:
+        <li *ngFor="let ingredient of recipe.ingredients">
+            {{ingredient.ingredient.name}}
+            ({{ingredient.quantity}}
+            {{ingredient.unit}})
+        </li><br>
+
+        <button (click)="toggleExpand()"> {{isExpanded ? "Hide instructions" : "Show instructions"}} </button>
+
+        <div *ngIf="isExpanded">
+
+            <li *ngFor="let instruction of recipe.instructions">
+                {{instruction}}
+            </li>
+
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <a routerLink="/recipes/{{recipe.id}}">More info...</a>
+    </mat-card-actions>
+
+</mat-card>
