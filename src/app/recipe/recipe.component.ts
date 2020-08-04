@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../model/recipe.model';
+import { RecipeService } from './../recipe.service';
 
 @Component({
   selector: 'app-recipe',
@@ -8,7 +9,7 @@ import { Recipe } from '../model/recipe.model';
 })
 export class RecipeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
   }
@@ -19,5 +20,13 @@ export class RecipeComponent implements OnInit {
 
   toggleExpand(): void {
     this.isExpanded = !this.isExpanded;
+  }
+
+  deleteOnClick(id: string) {
+    this.recipeService.deleteRecipe(id).subscribe(
+      {
+        next: id => console.log(id),
+        error: error => console.error('There was an error!', error)
+      })
   }
 }

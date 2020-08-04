@@ -23,9 +23,6 @@ export class RecipeCreateComponent implements OnInit {
   }
 
   onSubmit(formData: FormData) {
-    console.log("hello");
-    console.log(formData);
-    console.log(formData['name']);
     this.recipeService.postRecipe(formData).subscribe(
       {
         next: data => console.log(data),

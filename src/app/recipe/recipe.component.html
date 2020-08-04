@@ -29,7 +29,8 @@
 
     </mat-card-content>
     <mat-card-actions>
-        <a routerLink="/recipes/{{recipe.id}}">More info...</a>
+        <a routerLink="/recipes/{{recipe.id}}">More info...</a><br>
+        <button (click)="deleteOnClick([recipe.id])">Delete</button>
     </mat-card-actions>
 
 </mat-card>
